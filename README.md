@@ -1,2 +1,2 @@
-# parshant.github.io
+# parshant
 Portfolio website
