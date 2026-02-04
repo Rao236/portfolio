@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prashant Kumar | AI Engineer & Researcher</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --bg1: #000000;
+      --bg2: #0c1020;
+      --glass: rgba(255, 255, 255, 0.08);
+      --glass-strong: rgba(255, 255, 255, 0.12);
+      --border: rgba(255, 255, 255, 0.18);
+      --text: #eef1ff;
+      --muted: #b8c0ff;
+      --accent: #7aa2ff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, #0e1430, #04060c),
+                  radial-gradient(circle at bottom right, #12183a, #04060c);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 14px 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(16, 30, 44, 0.6);
+      backdrop-filter: blur(22px) saturate(140%);
+      -webkit-backdrop-filter: blur(22px) saturate(140%);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+    }
+
+    nav h1 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.4px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.95rem;
+      transition: 0.25s;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    .menu-btn {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .hero {
+      min-height: 100vh;
+      padding: 130px 10% 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    .hero h2 {
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      line-height: 1.15;
+    }
+
+    .hero p {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .hero .btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: var(--text);
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #7aa2ff, #9bd0ff);
+      color: #060b18;
+      border: none;
+    }
+
+    .btn:hover { transform: translateY(-2px); }
+
+    section { padding: 90px 10%; }
+
+    .title {
+      font-size: 1.7rem;
+      margin-bottom: 34px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+    }
+
+    a.card {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card {
+      background: var(--glass);
+      backdrop-filter: blur(20px) saturate(150%);
+      -webkit-backdrop-filter: blur(20px) saturate(150%);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      transition: 0.3s ease;
+      display: block;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      background: var(--glass-strong);
+      border-color: rgba(122,162,255,0.6);
+    }
+
+    .card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    footer {
+      padding: 30px 10%;
+      border-top: 1px solid var(--border);
+      background: rgba(10, 12, 25, 0.6);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      text-align: center;
+      color: var(--muted);
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        background: rgba(10, 12, 25, 0.8);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        padding: 12px 16px;
+        flex-direction: column;
+        display: none;
+      }
+
+      .nav-links.active { display: flex; }
+
+      .menu-btn { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <h1>Prashant Kumar</h1>
+  <div class="menu-btn" onclick="toggleMenu()">⋮</div>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">Profile</a>
+    <a href="#skills">Expertise</a>
+    <a href="#projects">Projects</a>
+    <a href="#research">Research</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h2>AI Engineer & Research-Oriented Software Developer</h2>
+  <p>
+    I design and build intelligent systems with an emphasis on applied machine learning,
+    secure computation, and low-level systems engineering. My work explores the intersection
+    of artificial intelligence, cryptography, and embedded platforms.
+  </p>
+  <div class="btns">
+    <button class="btn primary" onclick="scrollToSection('projects')">View Projects</button>
+    <button class="btn" onclick="scrollToSection('contact')">Contact</button>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="title">Professional Profile</h2>
+  <div class="card" style="max-width: 1200px; margin: auto;">
+    <p style="font-size: 1rem; line-height: 1.7; color: var(--muted);">
+      I am an undergraduate Computer Applications student with a strong academic and practical
+      orientation toward artificial intelligence, secure systems, and low-level software engineering.
+      My technical foundation spans machine learning, systems programming, and embedded platforms,
+      with a growing focus on building reliable, resource-efficient intelligent systems.
+
+      <br><br>
+
+      I have completed formal training in full-stack web development and maintain hands-on experience
+      across Python, C/C++, and Java, complemented by practical exposure to Linux-based development
+      environments and version-controlled collaborative workflows. My project work reflects an
+      interest in system-level design, including the development of a lightweight operating system
+      prototype on microcontroller hardware and the implementation of an on-device knowledge-centric
+      AI system leveraging semantic retrieval and retrieval-augmented generation techniques.
+
+      <br><br>
+
+      In parallel with my individual technical work, I initiated and maintain an open-source
+      technology community "CONECTOUT" aimed at collaborative learning and the development of practical,
+      research-oriented software systems. Through this initiative, I focus on creating structured
+      learning resources, encouraging reproducible engineering practices, and fostering
+      contributions in areas such as artificial intelligence, systems programming, and secure
+      computing.
+
+      <br><br>
+
+      Alongside applied development, I maintain a research-oriented mindset with exploratory work in
+      cognitive-inspired decision modeling and conceptual investigations into quantum-resilient
+      cryptographic methods. My long-term objective is to pursue advanced research and engineering
+      in intelligent systems, with the goal of contributing to robust, secure, and scalable AI
+      solutions that are deployable in real-world, resource-constrained environments.
+    </p>
+  </div>
+</section>
+
+
+<section id="skills">
+  <h2 class="title">Core Expertise</h2>
+  <div class="grid">
+    <a href="index.html" class="card"><h3>Artificial Intelligence</h3><p>Machine Learning, Deep Learning, Decision Modeling</p></a>
+    <a href="index.html" class="card"><h3>Security & Cryptography</h3><p>Quantum Cryptography, Post-Quantum Security (Foundational)</p></a>
+    <a href="index.html" class="card"><h3>Systems Engineering</h3><p>Linux, Embedded Systems, Operating Systems Fundamentals</p></a>
+    <a href="index.html" class="card"><h3>Programming</h3><p>Python, C/C++, Java</p></a>
+  </div>
+</section>
+
+<section id="projects">
+  <h2 class="title">Selected Projects</h2>
+  <div class="grid">
+    <a href="https://github.com/Rao236/ESP32-OS" class="card" target="_blank">
+      <h3>Lightweight Operating System on ESP32</h3>
+      <p>Designed a microcontroller-oriented operating system prototype featuring memory management, cooperative scheduling, and I/O abstractions.</p>
+    </a>
+    <a href="https://github.com/Rao236/Wiki-AI" class="card" target="_blank">
+      <h3>On-Device Knowledge-Centric AI (Wiki AI)</h3>
+      <p>Built an on-device language system leveraging document chunking, semantic retrieval, and retrieval-augmented generation.</p>
+    </a>
+  </div>
+</section>
+
+<section id="research">
+  <h2 class="title">Research & Publications</h2>
+  <div class="grid">
+    <a href="https://github.com/Rao236/Simple-Thinking-Model-STM-Paper-" class="card" target="_blank">
+      <h3>Simple Thinking Model (STM)</h3>
+      <p>Exploratory research on lightweight cognitive-inspired reasoning frameworks for decision-making systems.</p>
+    </a>
+    <a href="https://github.com/Rao236/Quantum-Encryption-QM-Paper-" class="card" target="_blank">
+      <h3>Quantum Encryption – QM'</h3>
+      <p>Conceptual study on quantum-resilient cryptographic primitives and secure communication models.</p>
+    </a>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="title">Professional Links</h2>
+  <div class="grid">
+    <a href="https://www.linkedin.com/in/prashant0rao/" target="_blank" class="card">
+      <h3>LinkedIn</h3>
+      <p>Professional profile and academic background.</p>
+    </a>
+    <a href="https://github.com/rao236" target="_blank" class="card">
+      <h3>GitHub</h3>
+      <p>Open-source projects, research code, and experiments.</p>
+    </a>
+    <a href="mailto:Raoparshant236@gmail.com" class="card">
+      <h3>Email</h3>
+      <p>For academic and professional correspondence.</p>
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Prashant Kumar · AI Engineer & Researcher
+</footer>
+
+<script>
+  function scrollToSection(id) {
+    document.getElementById(id).scrollIntoView({ behavior: "smooth" });
+  }
+
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>
